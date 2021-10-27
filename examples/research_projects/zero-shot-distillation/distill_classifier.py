@@ -305,9 +305,11 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(student_args.student_name_or_path, use_fast=data_args.use_fast_tokenizer)
     model.config.id2label = {i: label for i, label in enumerate(class_names)}
     model.config.label2id = {label: i for i, label in enumerate(class_names)}
-
+    def trun(text):
+      a = tokenizer(text,truncation=True)
+      return a
     # 4. train student on teacher predictions
-    dataset = dataset.map(tokenizer, input_columns="text")
+    dataset = dataset.map(trun, input_columns="text")
     dataset.set_format("torch")
 
     def compute_metrics(p, return_outputs=False):
