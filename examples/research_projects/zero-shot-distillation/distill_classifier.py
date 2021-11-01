@@ -50,7 +50,7 @@ class TeacherModelArguments:
         default=32, metadata={"help": "Batch size for generating teacher predictions."}
     )
     multi_label: Optional[bool] = field(
-        default=False,
+        default=True,
         metadata={
             "help": (
                 "Allow multiple classes to be true rather than forcing them to sum to 1 (sometimes called"
@@ -337,4 +337,11 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    arg = {
+        "data_file" : "/content/drive/MyDrive/nlp_solytics data/social profiling/distillation/text_for_training.txt" ,
+"class_names_file": "/content/drive/MyDrive/nlp_solytics data/social profiling/distillation/class_names.txt" ,
+"student_name_or_path" :"distilbert-base-uncased" ,
+"output_dir" :"/content/drive/MyDrive/nlp_solytics data/social profiling/distillation/model" ,
+
+    }
+    main(arg)
