@@ -337,11 +337,11 @@ def main():
 
 
 if __name__ == "__main__":
-    arg = {
-        "data_file" : "/content/drive/MyDrive/nlp_solytics data/social profiling/distillation/text_for_training.txt" ,
-"class_names_file": "/content/drive/MyDrive/nlp_solytics data/social profiling/distillation/class_names.txt" ,
-"student_name_or_path" :"distilbert-base-uncased" ,
-"output_dir" :"/content/drive/MyDrive/nlp_solytics data/social profiling/distillation/model" ,
+#     arg = {
+#         "data_file" : "/content/drive/MyDrive/nlp_solytics data/social profiling/distillation/text_for_training.txt" ,
+# "class_names_file": "/content/drive/MyDrive/nlp_solytics data/social profiling/distillation/class_names.txt" ,
+# "student_name_or_path" :"distilbert-base-uncased" ,
+# "output_dir" :"/content/drive/MyDrive/nlp_solytics data/social profiling/distillation/model" ,
 
-    }
-    main(arg)
+#     }
+    main()
