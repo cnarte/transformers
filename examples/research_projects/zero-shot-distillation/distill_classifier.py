@@ -202,13 +202,9 @@ def get_teacher_predictions(
     contr_id = -1 if entail_id == 0 else 0
     logits = torch.cat(logits, dim=0)  # N*K x 3
     nli_logits = logits.reshape(len(examples), len(class_names), -1)[..., [contr_id, entail_id]]  # N x K x 2
-
-    if multi_label:
-        # softmax over (contr, entail) logits for each class independently
-        nli_prob = (nli_logits / temperature).softmax(-1)
-    else:
-        # softmax over entail logits across classes s.t. class probabilities sum to 1.
-        nli_prob = (nli_logits / temperature).softmax(1)
+    #multi class
+    nli_prob = (nli_logits / temperature).softmax(-1)
+    
 
     return nli_prob[..., 1]  # N x K
 
@@ -339,3 +335,4 @@ def main():
 if __name__ == "__main__":
 
     main()
+# python /home/ubuntu/social_nlp/transformers/examples/research_projects/zero-shot-distillation/distill_classifier.py --data_file "/home/ubuntu/social_nlp/text_for_training.txt" --class_names_file "/home/ubuntu/social_nlp/class_names.txt" --student_name_or_path distilbert-base-uncased --output_dir "/home/ubuntu/social_nlp/saved_models" --overwrite_output_dir > /home/ubuntu/social_nlp/logs.txt 
