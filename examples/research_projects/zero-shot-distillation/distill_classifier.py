@@ -319,6 +319,7 @@ def main():
         args=training_args,
         train_dataset=dataset,
         compute_metrics=compute_metrics,
+        problem_type = "multi_label_classification"
     )
 
     if training_args.do_train:
